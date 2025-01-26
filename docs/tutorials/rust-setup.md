@@ -1,6 +1,8 @@
 # Setting up a dev container for Rust
 
 * Primary author: [Kaw Bu](https://github.com/kawbu)
+* Reviewer: [Kamal Deep Vasireddy](https://github.com/Kamal135792)
+
 
 ## Prerequisites
 
