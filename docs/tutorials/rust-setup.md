@@ -94,9 +94,9 @@ Replace `<bob-ross>` with your GitHub username.
 
 The `devcontainer.json` file defines the configuration for your development environment. In this case, we're specifying the following:
 
--`name`: A descriptive name for the container.  
--`image`: The docker image to use.  
--`customizations`: Adds useful configurations to VS Code.  
+    -`name`: A descriptive name for the container.  
+    -`image`: The docker image to use.  
+    -`customizations`: Adds useful configurations to VS Code.  
 
 ## Opening the Project in a Dev Container
 
@@ -155,4 +155,4 @@ As you can see, this syntax is very similar to languages such as C and Java!
 !!! info "`cargo build` vs `cargo run`"
     The command `cargo build` is used to compile `.rs` code into a format where it can be turned into a program. On the other hand, the `cargo run` is typically used to execute the file that has just been compiled. However, if a compiled file does not exist, then the `cargo run` command will first compile the `.rs` file, and then run it.
 
-Congratulations, you have written and ran your very first Rust program using the Cargo package manager!
+**Congratulations, you have written and ran your very first Rust program using the Cargo package manager!**
