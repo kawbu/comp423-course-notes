@@ -12,7 +12,7 @@ Before we dive in, make sure you have:
 2. **[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) already installed**
 3. **[Visual Studio Code](https://code.visualstudio.com/)**
 4. **[Docker preinstalled](https://www.docker.com/products/docker-desktop)**
-5. **COMP211**
+5. **COMP211** Credit
 
 ## Project Setup
 
@@ -75,19 +75,43 @@ Replace `<bob-ross>` with your GitHub username.
 ### Add Development Container Configuration
 
 1. In VS Code, open the `rust-tutorial` directory.
-2. Install the **Dev Containers** extension for VS Code
-3. Create a `.devcontainer` directory in the root of your project with the following file inside of this "hidden" configuration directory:
+2. (If you havent already) Install the **Dev Containers** extension for VS Code
+3. Create a `.devcontainer` directory in the root of your project.  
+4. Create a `devcontainer.json` file within the `.devcontainer` directory, with the following code:
 
-`.devcontainer/devcontainer.json`
+```json
+{
+  "name": "Rust Tutorial",
+  "image": "mcr.microsoft.com/devcontainers/rust:latest",
+  "customizations": {
+    "vscode": {
+      "settings": {},
+      "extensions": ["rust-lang.rust-analyzer"]
+    }
+  }
+}
+```
 
-The `devcontainer.json` file defines the configuration for your development environment. Here, we're specifying the following:
+The `devcontainer.json` file defines the configuration for your development environment. In this case, we're specifying the following:
 
 -`name`: A descriptive name for the container.  
 -`image`: The docker image to use.  
 -`customizations`: Adds useful configurations to VS Code.  
--`postCreateCommand`: A command to run after the container has been created.  
 
-A dev container
+## Opening the Project in a Dev Container
+
+1. In VS Code, open the container by pressing `Ctrl+Shift+P`, and select the option which says "Dev Containers: Reopen in Container".
+
+!!! warning "Troubleshooting `Dev Containers: Reopen in Container`"
+    Ensure you are inside of the rust-tutorial directory when running this command! Otherwise VS Code will prompt you to provide a container build, as it cannot detect the `.devcontainer` directory and `devcontainer.json` file!  
+
+2. Now, your dev container is set up! Close the current terminal tab, and open a new one.
+3. To ensure that rust is running, run the command `rustc --verison` and ensure no errors appear. This should also show you the latest version of Rust which has just been installed on your working container.
+
+!!! success "Output of `rustc --version`"
+    After creating your container and running `rustc --version`, you may see that your version of Rust differs from if you were to create your container a month or two ago! This is because programming languages are always receiving updates and changes!
+
+## Writing your first Rust Program
 
 ### What is Rust?
 
@@ -97,17 +121,38 @@ Rust is a fast and efficient programming language published on May 15, 2015. It 
 - Many Safety Features
 - A Strong Ecosystem
 
+### Creating a Rust Project File
 
-### Basic Rust Syntax
+Before we begin creating your very first rust program, use the `cargo new hello_423 --vcs none` command. This will create a new binary project for you!
 
-Here is a simple "Hello 423!" implementation for Rust:
+!!! info "Explaining what `cargo new hello_423 --vcs none` does"
+    `cargo`: Cargo is a Rust package manager, similarly to Maven in Java (you may recall this if you took COMP301!)
+    `new`: Keyword for creating a new project
+    `--vcs none`: Necessary flag to prevent cargo from also creating a new `git` repo by default.  
 
-```
+
+### Writing and Running your very first Rust program!
+
+1. Navigate to the `main.rs` file within `hello_423/src/`, here, you should see the following code snippet: 
+
+```rust 
 fn main() {
-
-  println!("Hello 423!");
-
+    println!("Hello COMP423");
 }
 ```
 
-As you can see, this is very similar to languages such as C and Java!
+As you can see, this syntax is very similar to languages such as C and Java!
+
+2. Now, lets run your code! First, we must compile your program by first running `cargo build` after entering the `hello_423` directory.
+
+!!! question "What does `cargo build` do?"
+    The `cargo build` will compile your `.rs` file into a file that is ready to be run on the working machine. This is very similar to the `gcc -c app.c` command that will transform a `.c` file into a `.o` file.
+
+3. Now, you should see a file named `Cargo.lock`, this file  contains information regarding your program's dependencies and allows your program to actually run. We are now ready to run the program! Run the code `cargo run`, and you should see the following output:
+
+```Hello COMP423!```
+
+!!! info "`cargo build` vs `cargo run`"
+    The command `cargo build` is used to compile `.rs` code into a format where it can be turned into a program. On the other hand, the `cargo run` is typically used to execute the file that has just been compiled. However, if a compiled file does not exist, then the `cargo run` command will first compile the `.rs` file, and then run it.
+
+Congratulations, you have written and ran your very first Rust program using the Cargo package manager!
