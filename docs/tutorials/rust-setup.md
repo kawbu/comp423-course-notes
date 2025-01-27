@@ -137,20 +137,18 @@ Before we begin creating your very first rust program, use the `cargo new hello_
 
 ```rust 
 fn main() {
-    println!("Hello, world!");
+    println!("Hello COMP423");
 }
 ```
 
 As you can see, this syntax is very similar to languages such as C and Java!
 
-2. Change the code `println!("Hello, world!");` to `println!("Hello COMP423!");`.
-
-3. Now, lets run your code! First, we must compile your program by first running `cargo build` after entering the `hello_423` directory.
+2. Now, lets run your code! First, we must compile your program by first running `cargo build` after entering the `hello_423` directory.
 
 !!! question "What does `cargo build` do?"
     The `cargo build` will compile your `.rs` file into a file that is ready to be run on the working machine. This is very similar to the `gcc -c app.c` command that will transform a `.c` file into a `.o` file.
 
-4. Now, you should see a file named `Cargo.lock`, this file  contains information regarding your program's dependencies and allows your program to actually run. We are now ready to run the program! Run the code `cargo run`, and you should see the following output:
+3. Now, you should see a file named `Cargo.lock`, this file  contains information regarding your program's dependencies and allows your program to actually run. We are now ready to run the program! Run the code `cargo run`, and you should see the following output:
 
 ```Hello COMP423!```
 
